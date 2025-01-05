@@ -107,18 +107,6 @@ export function Hero() {
                 </span>
               </motion.h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-xl text-gray-400 max-w-2xl"
-              >
-                I&apos;m a passionate{" "}
-                <span className="text-purple-400">Full Stack Developer</span> &{" "}
-                <span className="text-blue-400">UI/UX Designer</span> crafting
-                innovative digital solutions
-              </motion.p>
-
               {/* Cool Separator */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -132,6 +120,18 @@ export function Hero() {
                 <div className="absolute -bottom-[2px] right-0 w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/50 to-blue-500/50 blur-md animate-pulse" />
               </motion.div>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-xl text-gray-400 max-w-2xl"
+              >
+                I&apos;m a passionate{" "}
+                <span className="text-purple-400">Full Stack Developer</span> &{" "}
+                <span className="text-blue-400">UI/UX Designer</span> crafting
+                innovative digital solutions
+              </motion.p>
             </div>
 
             {/* CTA Buttons */}
