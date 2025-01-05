@@ -112,7 +112,7 @@ export function Hero() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3 }}
-                className="relative h-1 w-24 mx-0 sm:mx-auto mt-6"
+                className="relative h-1 w-24 mx-0 mt-6"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 blur-sm" />
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500" />
