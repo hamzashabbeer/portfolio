@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -64,10 +64,23 @@ const projects = [
 
 export function Projects() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const getVisibleProjects = () => {
     const result = [];
-    for (let i = 0; i < 3; i++) {
+    const visibleCount = windowWidth < 640 ? 1 : 
+                        windowWidth < 1024 ? 2 : 3;
+    
+    for (let i = 0; i < visibleCount; i++) {
       const index = (currentIndex + i) % projects.length;
       result.push(projects[index]);
     }
@@ -120,7 +133,7 @@ export function Projects() {
 
         {/* Projects Carousel */}
         <div className="relative h-[500px] w-full max-w-7xl mx-auto">
-          <div className="grid grid-cols-3 gap-6 absolute inset-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 absolute inset-0">
             {getVisibleProjects().map((project, index) => (
               <div
                 key={`${project.title}-${index}`}
@@ -142,16 +155,15 @@ export function Projects() {
                 </div>
 
                 {/* Project Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
-                  <h3 className="text-2xl font-bold text-white mb-3">
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <h3 className="text-xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400 group-hover:from-purple-300 group-hover:to-blue-300">
                     {project.title}
                   </h3>
-                  
-                  <p className="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-2">
+                  <p className="text-sm text-gray-400 mb-4 line-clamp-2 group-hover:text-gray-300">
                     {project.description}
                   </p>
-
-                  {/* Tags */}
+                  
+                  {/* Tech Stack */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag) => {
                       const Icon = tag.icon;
@@ -168,24 +180,26 @@ export function Projects() {
                   </div>
 
                   {/* Links */}
-                  <div className="flex items-center gap-3">
+                  <div className="flex gap-3">
                     <Link
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm"
+                      className="group/link relative w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-gradient-to-r from-white/[0.05] to-white/[0.01] backdrop-blur-xl border border-white/[0.05] hover:shadow-[0_8px_32px_0_rgba(147,51,234,0.2)] transition-all duration-300"
                     >
-                      <BsGithub className="w-4 h-4" />
-                      <span>Code</span>
+                      <div className="absolute inset-0 bg-[conic-gradient(from_var(--shimmer-angle),theme(colors.purple.600)_0%,theme(colors.blue.600)_10%,theme(colors.purple.600)_20%)] animate-[shimmer_2.5s_linear_infinite] opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" style={{ '--shimmer-angle': '0deg' } as React.CSSProperties} />
+                      <div className="absolute inset-[1px] rounded-lg bg-black/50 backdrop-blur-sm group-hover/link:bg-black/30 transition-colors" />
+                      <BsGithub className="w-4 h-4 text-white/80 group-hover/link:text-white relative z-10" />
                     </Link>
                     <Link
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm"
+                      className="group/link relative w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-gradient-to-r from-white/[0.05] to-white/[0.01] backdrop-blur-xl border border-white/[0.05] hover:shadow-[0_8px_32px_0_rgba(147,51,234,0.2)] transition-all duration-300"
                     >
-                      <HiOutlineExternalLink className="w-4 h-4" />
-                      <span>Demo</span>
+                      <div className="absolute inset-0 bg-[conic-gradient(from_var(--shimmer-angle),theme(colors.purple.600)_0%,theme(colors.blue.600)_10%,theme(colors.purple.600)_20%)] animate-[shimmer_2.5s_linear_infinite] opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" style={{ '--shimmer-angle': '0deg' } as React.CSSProperties} />
+                      <div className="absolute inset-[1px] rounded-lg bg-black/50 backdrop-blur-sm group-hover/link:bg-black/30 transition-colors" />
+                      <HiOutlineExternalLink className="w-4 h-4 text-white/80 group-hover/link:text-white relative z-10" />
                     </Link>
                   </div>
                 </div>
