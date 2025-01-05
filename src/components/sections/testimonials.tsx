@@ -1,9 +1,9 @@
 "use client";
 
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { BsLinkedin, BsQuote, BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { BsLinkedin, BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { FaQuoteRight } from "react-icons/fa";
 
 const testimonials = [
@@ -36,7 +36,6 @@ const testimonials = [
 export function Testimonials() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
   const { scrollYProgress } = useScroll({
@@ -83,7 +82,6 @@ export function Testimonials() {
   const paginate = (newDirection: number) => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setDirection(newDirection);
     setCurrentIndex((prevIndex) => (prevIndex + newDirection + testimonials.length) % testimonials.length);
     setTimeout(() => setIsAnimating(false), 500);
   };
@@ -222,7 +220,6 @@ export function Testimonials() {
               <button
                 key={index}
                 onClick={() => {
-                  setDirection(index > currentIndex ? 1 : -1);
                   setCurrentIndex(index);
                 }}
                 className={`h-1 rounded-full transition-all duration-300 ${
