@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { BsLinkedin, BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { FaQuoteRight } from "react-icons/fa";
@@ -37,6 +37,16 @@ export function Testimonials() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -88,7 +98,11 @@ export function Testimonials() {
 
   const getVisibleTestimonials = () => {
     const result = [];
-    for (let i = 0; i < 3; i++) {
+    const visibleCount = typeof window !== 'undefined' ? 
+      window.innerWidth < 640 ? 1 : 
+      window.innerWidth < 1024 ? 2 : 3 : 3;
+      
+    for (let i = 0; i < visibleCount; i++) {
       const index = (currentIndex + i) % testimonials.length;
       result.push(testimonials[index]);
     }
@@ -139,12 +153,12 @@ export function Testimonials() {
 
         {/* Testimonials Carousel */}
         <div className="relative max-w-7xl mx-auto">
-          <div className="relative h-[300px] overflow-hidden">
-            <div className="absolute inset-0 grid grid-cols-3 gap-6">
+          <div className="relative h-[300px] sm:h-[350px] overflow-hidden">
+            <div className="absolute inset-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {getVisibleTestimonials().map((testimonial, index) => (
                 <div
                   key={`${testimonial.id}-${index}`}
-                  className="group relative bg-gradient-to-r from-white/[0.05] to-white/[0.01] backdrop-blur-xl p-6 rounded-2xl border border-white/[0.05] shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] hover:shadow-[0_8px_32px_0_rgba(147,51,234,0.2)] transition-all duration-500 overflow-hidden hover:scale-[1.02]"
+                  className="group relative bg-gradient-to-r from-white/[0.05] to-white/[0.01] backdrop-blur-xl p-4 sm:p-6 rounded-2xl border border-white/[0.05] shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] hover:shadow-[0_8px_32px_0_rgba(147,51,234,0.2)] transition-all duration-500 overflow-hidden hover:scale-[1.02]"
                 >
                   {/* Background Effects */}
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

@@ -26,7 +26,7 @@ const socialLinks = [
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-28 lg:pt-16">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[#0A0118]">
         {/* Base Pattern */}
