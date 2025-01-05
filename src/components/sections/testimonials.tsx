@@ -110,7 +110,7 @@ export function Testimonials() {
   };
 
   return (
-    <section className="py-32 relative -mt-32 -mb-32 z-0" id="testimonials">
+    <section className="py-16 sm:py-24 md:py-32 relative -mt-16 sm:-mt-24 md:-mt-32 -mb-16 sm:-mb-24 md:-mb-32 z-0" id="testimonials">
       {/* Background Effects */}
       <div className="absolute inset-0 z-0">
         {/* Gradient Orbs */}
