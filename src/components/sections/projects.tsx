@@ -93,10 +93,10 @@ export function Projects() {
 
   return (
     <section className="relative py-20 overflow-hidden" id="projects">
-      {/* Background Effects */}
+      {/* Background Effects - Optimized */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-gradient-to-br from-purple-500/20 to-transparent rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-gradient-to-br from-blue-500/20 to-transparent rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-gradient-to-br from-purple-500/10 to-transparent rounded-full blur-3xl animate-pulse-slow" />
+        <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-gradient-to-br from-blue-500/10 to-transparent rounded-full blur-3xl animate-pulse-slow" />
       </div>
 
       <div className="container mx-auto px-4 relative">
@@ -119,15 +119,14 @@ export function Projects() {
           {/* Cool Separator */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             className="relative h-1 w-24 mx-auto mt-6"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 blur-sm" />
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500" />
-            <div className="absolute -top-[2px] left-0 w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
-            <div className="absolute -bottom-[2px] right-0 w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/50 to-blue-500/50 blur-md animate-pulse" />
+            <div className="absolute -top-[2px] left-0 w-2 h-2 rounded-full bg-purple-500 animate-pulse-slow" />
+            <div className="absolute -bottom-[2px] right-0 w-2 h-2 rounded-full bg-blue-500 animate-pulse-slow" />
           </motion.div>
         </motion.div>
 
@@ -135,12 +134,14 @@ export function Projects() {
         <div className="relative h-[500px] w-full max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 absolute inset-0">
             {getVisibleProjects().map((project, index) => (
-              <div
+              <motion.div
                 key={`${project.title}-${index}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
                 className="relative h-[450px] bg-gradient-to-r from-white/[0.05] to-white/[0.01] backdrop-blur-xl rounded-3xl border border-white/[0.05] shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] overflow-hidden group transform-gpu hover:scale-[1.02] transition-all duration-500"
               >
-                <div className="absolute inset-0 bg-[linear-gradient(40deg,transparent_40%,rgba(255,255,255,0.1)_45%,rgba(255,255,255,0.1)_55%,transparent_60%)] pointer-events-none"></div>
-                
                 {/* Project Image */}
                 <div 
                   className="relative h-[250px] transform-gpu rotate-[-5deg] scale-110 -translate-y-4 hover:scale-115 hover:rotate-[-3deg] transition-all duration-400"
@@ -150,6 +151,7 @@ export function Projects() {
                     alt={project.title}
                     fill
                     className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
                 </div>
@@ -187,8 +189,6 @@ export function Projects() {
                       rel="noopener noreferrer"
                       className="group/link relative w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-gradient-to-r from-white/[0.05] to-white/[0.01] backdrop-blur-xl border border-white/[0.05] hover:shadow-[0_8px_32px_0_rgba(147,51,234,0.2)] transition-all duration-300"
                     >
-                      <div className="absolute inset-0 bg-[conic-gradient(from_var(--shimmer-angle),theme(colors.purple.600)_0%,theme(colors.blue.600)_10%,theme(colors.purple.600)_20%)] animate-[shimmer_2.5s_linear_infinite] opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" style={{ '--shimmer-angle': '0deg' } as React.CSSProperties} />
-                      <div className="absolute inset-[1px] rounded-lg bg-black/50 backdrop-blur-sm group-hover/link:bg-black/30 transition-colors" />
                       <BsGithub className="w-4 h-4 text-white/80 group-hover/link:text-white relative z-10" />
                     </Link>
                     <Link
@@ -197,13 +197,11 @@ export function Projects() {
                       rel="noopener noreferrer"
                       className="group/link relative w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-gradient-to-r from-white/[0.05] to-white/[0.01] backdrop-blur-xl border border-white/[0.05] hover:shadow-[0_8px_32px_0_rgba(147,51,234,0.2)] transition-all duration-300"
                     >
-                      <div className="absolute inset-0 bg-[conic-gradient(from_var(--shimmer-angle),theme(colors.purple.600)_0%,theme(colors.blue.600)_10%,theme(colors.purple.600)_20%)] animate-[shimmer_2.5s_linear_infinite] opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" style={{ '--shimmer-angle': '0deg' } as React.CSSProperties} />
-                      <div className="absolute inset-[1px] rounded-lg bg-black/50 backdrop-blur-sm group-hover/link:bg-black/30 transition-colors" />
                       <HiOutlineExternalLink className="w-4 h-4 text-white/80 group-hover/link:text-white relative z-10" />
                     </Link>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -211,24 +209,16 @@ export function Projects() {
           <div className="absolute -left-4 top-1/2 -translate-y-1/2 flex items-center gap-4">
             <button
               onClick={() => paginate(-1)}
-              className="group relative w-12 h-12 rounded-full flex items-center justify-center overflow-hidden"
+              className="group relative w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-black/50 backdrop-blur-sm hover:bg-black/30 transition-colors"
             >
-              {/* Disco Light Effect */}
-              <div className="absolute inset-0 bg-[conic-gradient(from_var(--shimmer-angle),theme(colors.purple.600)_0%,theme(colors.blue.600)_10%,theme(colors.purple.600)_20%)] animate-[shimmer_2.5s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ '--shimmer-angle': '0deg' } as React.CSSProperties} />
-              <div className="absolute inset-[1px] rounded-full bg-black/50 backdrop-blur-sm group-hover:bg-black/30 transition-colors" />
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full blur group-hover:opacity-100 opacity-0 transition-opacity duration-300" />
               <BsChevronLeft className="w-6 h-6 text-white/80 group-hover:text-white relative z-10" />
             </button>
           </div>
           <div className="absolute -right-4 top-1/2 -translate-y-1/2 flex items-center gap-4">
             <button
               onClick={() => paginate(1)}
-              className="group relative w-12 h-12 rounded-full flex items-center justify-center overflow-hidden"
+              className="group relative w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-black/50 backdrop-blur-sm hover:bg-black/30 transition-colors"
             >
-              {/* Disco Light Effect */}
-              <div className="absolute inset-0 bg-[conic-gradient(from_var(--shimmer-angle),theme(colors.purple.600)_0%,theme(colors.blue.600)_10%,theme(colors.purple.600)_20%)] animate-[shimmer_2.5s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ '--shimmer-angle': '0deg' } as React.CSSProperties} />
-              <div className="absolute inset-[1px] rounded-full bg-black/50 backdrop-blur-sm group-hover:bg-black/30 transition-colors" />
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full blur group-hover:opacity-100 opacity-0 transition-opacity duration-300" />
               <BsChevronRight className="w-6 h-6 text-white/80 group-hover:text-white relative z-10" />
             </button>
           </div>
