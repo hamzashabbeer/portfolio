@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         background: '#0A0118',
         primary: '#7878C6',
+        border: 'hsl(var(--border))',
       },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
