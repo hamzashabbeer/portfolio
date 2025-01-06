@@ -206,7 +206,7 @@ export function Projects() {
           </div>
 
           {/* Navigation */}
-          <div className="absolute -left-4 top-1/2 -translate-y-1/2 flex items-center gap-4">
+          <div className="absolute -left-12 sm:-left-16 top-1/2 -translate-y-1/2 flex items-center gap-4">
             <button
               onClick={() => paginate(-1)}
               className="group relative w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-black/50 backdrop-blur-sm hover:bg-black/30 transition-colors"
@@ -214,7 +214,7 @@ export function Projects() {
               <BsChevronLeft className="w-6 h-6 text-white/80 group-hover:text-white relative z-10" />
             </button>
           </div>
-          <div className="absolute -right-4 top-1/2 -translate-y-1/2 flex items-center gap-4">
+          <div className="absolute -right-12 sm:-right-16 top-1/2 -translate-y-1/2 flex items-center gap-4">
             <button
               onClick={() => paginate(1)}
               className="group relative w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-black/50 backdrop-blur-sm hover:bg-black/30 transition-colors"

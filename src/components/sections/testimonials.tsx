@@ -207,23 +207,19 @@ export function Testimonials() {
           </div>
 
           {/* Navigation */}
-          <div className="absolute -left-4 top-1/2 -translate-y-1/2">
+          <div className="absolute -left-12 sm:-left-16 top-1/2 -translate-y-1/2">
             <button
               onClick={() => paginate(-1)}
-              className="group relative w-12 h-12 rounded-full flex items-center justify-center overflow-hidden"
+              className="group relative w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-black/50 backdrop-blur-sm hover:bg-black/30 transition-colors"
             >
-              <div className="absolute inset-0 bg-[conic-gradient(from_var(--shimmer-angle),theme(colors.purple.600)_0%,theme(colors.blue.600)_10%,theme(colors.purple.600)_20%)] animate-[shimmer_2.5s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ '--shimmer-angle': '0deg' } as React.CSSProperties} />
-              <div className="absolute inset-[1px] rounded-full bg-black/50 backdrop-blur-sm group-hover:bg-black/30 transition-colors" />
               <BsChevronLeft className="w-6 h-6 text-white/80 group-hover:text-white relative z-10" />
             </button>
           </div>
-          <div className="absolute -right-4 top-1/2 -translate-y-1/2">
+          <div className="absolute -right-12 sm:-right-16 top-1/2 -translate-y-1/2">
             <button
               onClick={() => paginate(1)}
-              className="group relative w-12 h-12 rounded-full flex items-center justify-center overflow-hidden"
+              className="group relative w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-black/50 backdrop-blur-sm hover:bg-black/30 transition-colors"
             >
-              <div className="absolute inset-0 bg-[conic-gradient(from_var(--shimmer-angle),theme(colors.purple.600)_0%,theme(colors.blue.600)_10%,theme(colors.purple.600)_20%)] animate-[shimmer_2.5s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ '--shimmer-angle': '0deg' } as React.CSSProperties} />
-              <div className="absolute inset-[1px] rounded-full bg-black/50 backdrop-blur-sm group-hover:bg-black/30 transition-colors" />
               <BsChevronRight className="w-6 h-6 text-white/80 group-hover:text-white relative z-10" />
             </button>
           </div>
