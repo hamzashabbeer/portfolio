@@ -207,7 +207,7 @@ export function Testimonials() {
           </div>
 
           {/* Navigation */}
-          <div className="absolute -left-12 sm:-left-16 top-1/2 -translate-y-1/2">
+          <div className="hidden sm:flex absolute -left-20 lg:-left-24 top-1/2 -translate-y-1/2">
             <button
               onClick={() => paginate(-1)}
               className="group relative w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-black/50 backdrop-blur-sm hover:bg-black/30 transition-colors"
@@ -215,7 +215,23 @@ export function Testimonials() {
               <BsChevronLeft className="w-6 h-6 text-white/80 group-hover:text-white relative z-10" />
             </button>
           </div>
-          <div className="absolute -right-12 sm:-right-16 top-1/2 -translate-y-1/2">
+          <div className="hidden sm:flex absolute -right-20 lg:-right-24 top-1/2 -translate-y-1/2">
+            <button
+              onClick={() => paginate(1)}
+              className="group relative w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-black/50 backdrop-blur-sm hover:bg-black/30 transition-colors"
+            >
+              <BsChevronRight className="w-6 h-6 text-white/80 group-hover:text-white relative z-10" />
+            </button>
+          </div>
+
+          {/* Mobile Navigation */}
+          <div className="sm:hidden absolute inset-x-0 bottom-20 flex justify-between px-4">
+            <button
+              onClick={() => paginate(-1)}
+              className="group relative w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-black/50 backdrop-blur-sm hover:bg-black/30 transition-colors"
+            >
+              <BsChevronLeft className="w-6 h-6 text-white/80 group-hover:text-white relative z-10" />
+            </button>
             <button
               onClick={() => paginate(1)}
               className="group relative w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-black/50 backdrop-blur-sm hover:bg-black/30 transition-colors"
